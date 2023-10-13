@@ -63,6 +63,7 @@ body {
 }
 .address-bar{
   width: 5rem;
+  text-align: center;
 }
 .formula-bar{
   width: calc(100vw - 5rem - 0.7rem - 0.7rem - 4rem );
@@ -108,31 +109,66 @@ body {
 .grid-cont {
   height: calc(100vh - 3rem - 3rem - 2rem - 3rem);
   position: relative;
+  overflow-y: scroll;
+  background-color: #ecf0f1;
 }
 
 .top-left-dummy-box{
   height: 2rem;
   width: 2rem;
   background-color: #747d8c;
+  position: sticky;
+  left: 0;
+  z-index: 1;
 }
 .cells-cont{
   position: absolute;
   top: 0;
   left: 2rem;
-  width: 10rem;
-  height: 10rem;
-  background-color: #747d8c;
+  display: flex;
+  flex-direction: column;
+
 }
 
 .address-col-cont{
-  height: 10rem;
-  width: 2rem;
-  background-color: lightblue;
+
+  position: sticky;
+  left: 0;
 }
 .address-row-cont{
   height: 2rem;
-  width: 20rem;
-  background-color: lightcoral;
+  width:fit-content;
+  display: flex;
+  position: sticky;
+  top: 0rem;
+  left: 2rem;
+  z-index: 4;
+  background-color: #dfe4ea;
+}
+
+.address-col{
+  height: 2rem;
+  width: 2rem;
+  text-align: center;
+  border: 1px solid #dfe4ea;
+}
+.address-row{
+  height: 2rem;
+  width: 5rem;
+  border: 1px solid #dfe4ea;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
 }
 
+.cell{
+  width: 5rem;
+  height: 2rem;
+  border: 1px solid  #dfe4ea;
+  outline: none;
+  }
+
+  .address-row-cells{
+    display: flex;
+  }
