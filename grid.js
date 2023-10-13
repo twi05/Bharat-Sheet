@@ -28,19 +28,35 @@ for (let i = 0; i < rows; i++) {
     let addressCell = document.createElement("div");
     addressCell.setAttribute("class", "cell");
     addressCell.setAttribute("contenteditable", "true");
+    addressCell.setAttribute("spellcheck", false);
+    addressCell.setAttribute("rid",i);
+    addressCell.setAttribute("cid",j);
     addressRow.appendChild(addressCell);
+    if (i === 0 && j == 0) {
+      addressCell.setAttribute("id", "selectable");
+    }
     addEventListenerForAddressBarCont(addressCell, i, j);
   }
-
   addressCellsCont.appendChild(addressRow);
 }
 
 function addEventListenerForAddressBarCont(cell, i, j) {
   const addressBarCont = document.querySelector(".address-bar");
-  console.log(addressBarCont);
+  if (i === 0 && j == 0) {
+    addressBarCont.value = "1A";
+  }
   cell.addEventListener("click", () => {
-   const address = i+1 + String.fromCharCode(j + 65);
-   console.log(address);
-   addressBarCont.value = address;
+    const address =String.fromCharCode(j + 65) + (i + 1) ;
+    addressBarCont.value = address;
   });
 }
+
+// For selecting first cell
+const el = document.getElementById("selectable");
+const selection = window.getSelection();
+const range = document.createRange();
+selection.removeAllRanges();
+range.selectNodeContents(el);
+range.collapse(false);
+selection.addRange(range);
+el.focus();
